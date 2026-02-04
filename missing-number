@@ -1,0 +1,14 @@
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        nums.sort()
+        start=0
+        for i in nums:
+            if start==i:
+                start+=1
+            
+        return start
+
+
+
+    
+        
