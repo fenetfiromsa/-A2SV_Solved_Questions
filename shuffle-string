@@ -1,0 +1,9 @@
+class Solution:
+    def restoreString(self, s: str, indices: List[int]) -> str:
+        arr=[]
+        for i in range(len(s)):
+            ind=indices.index(i)
+            arr.append(s[ind])
+        return "".join(arr)        
+
+        
