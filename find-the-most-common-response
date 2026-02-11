@@ -1,0 +1,21 @@
+from collections import Counter
+
+class Solution:
+    def findCommonResponse(self, responses: List[List[str]]) -> str:
+        count = Counter()
+        
+        for r in responses:
+            count.update(set(r))  
+        
+        max_freq = max(count.values())
+        
+      
+        cand = [word for word, freq in count.items() if freq == max_freq]
+        
+        
+        return min(cand)
+
+        
+
+
+        
