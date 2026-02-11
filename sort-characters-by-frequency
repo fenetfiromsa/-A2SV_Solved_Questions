@@ -1,0 +1,10 @@
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        count=Counter(s)
+        decr=count.most_common()
+        res=""
+        for ch, val in decr:
+            for i in range(val):
+                res+=ch
+        return res        
+        
