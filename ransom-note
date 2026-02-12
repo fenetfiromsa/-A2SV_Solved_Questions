@@ -1,0 +1,11 @@
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        countr=Counter(ransomNote) 
+        countm=Counter(magazine)
+        for i in ransomNote:
+            if countr[i]>countm[i]:
+                return False
+        return True        
+
+                
+     
