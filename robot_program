@@ -1,0 +1,41 @@
+import sys
+input = sys.stdin.readline
+
+t = int(input())
+for _ in range(t):
+    n, x, k = map(int, input().split())
+    s = input().strip()
+    
+    prefix = [0] * (n + 1)
+    for i in range(n):
+        if s[i] == 'L':
+            prefix[i+1] = prefix[i] - 1
+        else:
+            prefix[i+1] = prefix[i] + 1
+    
+    
+    first = -1
+    for i in range(1, n+1):
+        if x + prefix[i] == 0:
+            first = i
+            break
+    
+    if first == -1 or first > k:
+        print(0)
+        continue
+    
+    answer = 1
+    remaining = k - first
+    
+    
+    cycle_len = -1
+    for i in range(1, n+1):
+        if prefix[i] == 0:
+            cycle_len = i
+            break
+    
+    if cycle_len == -1:
+        print(answer)
+    else:
+        answer += remaining // cycle_len
+        print(answer)
