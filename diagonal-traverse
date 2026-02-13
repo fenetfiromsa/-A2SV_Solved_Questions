@@ -1,0 +1,35 @@
+class Solution:
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        row=len(mat)
+        col=len(mat[0])
+        res={}
+        
+        
+        for i in range(row):
+            for j in range(col):
+                if i+j in res:
+                    res[i+j].append(mat[i][j])
+                else:    
+                    res[i+j]=[mat[i][j]]
+        
+
+        for key, val in res.items():
+            if key%2==0:
+                val.reverse()
+            
+        return [wor for val in res.values() for wor in val]           
+
+
+
+
+
+
+
+             
+
+
+        
+
+
+
+        
