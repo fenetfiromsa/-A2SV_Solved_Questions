@@ -1,0 +1,25 @@
+from collections import Counter
+from typing import List
+
+class Solution:
+    def minimumIndex(self, nums: List[int]) -> int:
+        n = len(nums)
+        
+        # Find dominant element
+        count = Counter(nums)
+        x, total = count.most_common(1)[0]
+        
+        left_count = 0
+        
+        for i in range(n - 1):
+            if nums[i] == x:
+                left_count += 1
+            
+            left_length = i + 1
+            right_length = n - left_length
+            
+            # Check dominance in both parts
+            if left_count * 2 > left_length and (total - left_count) * 2 > right_length:
+                return i
+        
+        return -1
