@@ -1,0 +1,25 @@
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+        dic={}
+        for i in range(len(names)):
+            dic[heights[i]]=names[i]
+
+        maximum = max(heights)
+        count = [0] * (maximum + 1) 
+        for height in heights:
+            count[height] +=1
+        target = 0
+        for index, value in enumerate(count):
+            for i in range(value):
+                heights[target] = index
+                target += 1        
+           
+       
+        ans = []
+        for h in heights:
+            ans.append(dic[h])   
+        return ans[::-1]   
+                
+
+
+        
