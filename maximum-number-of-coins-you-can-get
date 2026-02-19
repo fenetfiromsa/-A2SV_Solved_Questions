@@ -1,0 +1,16 @@
+class Solution:
+    def maxCoins(self, piles: List[int]) -> int:
+        sortted = sorted(piles)
+        half = len(piles)//3
+        res = []
+        ans = 0
+        for i in range(len(piles)-2, half-1, -2 ):
+            res.append(sortted[i])
+        for i in res:
+            ans+=i
+        return ans        
+           
+
+
+
+        
