@@ -1,0 +1,21 @@
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -> int:
+        n = len(points)
+        s = sorted(points)
+        arrow = 1
+        last = s[0][1]
+        
+        for i in range(n):
+            if s[i][0] > last:
+                arrow+=1
+                last = s[i][1]
+              
+            else:
+                last = min(last, s[i][1])
+        return arrow        
+
+
+            
+
+        
+        
