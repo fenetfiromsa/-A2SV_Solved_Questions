@@ -1,0 +1,15 @@
+
+t = int(input())
+for _ in range(t):
+    n, x= map(int, input().split())
+    nums = []
+    for i in range(n):
+        num = list(map(int, input().split()))
+        nums. append((num))
+    nums.sort() 
+    for i in range(n):
+        if nums[i][0] <= x and nums[i][1]>= x:
+            x = max(x, nums[i][2])
+    print(x)        
+
+    
