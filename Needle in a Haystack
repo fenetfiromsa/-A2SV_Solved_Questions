@@ -1,0 +1,53 @@
+from collections import Counter
+te = int(input())
+for i in range(te):
+    s = input().strip()
+    t = input().strip()
+    counts = Counter(s)
+    countt = Counter(t)
+
+    flag = True
+
+    for i in counts:
+        if counts[i] > countt[i]:
+            flag = False
+            break
+
+
+
+    if not flag:
+        print("Impossible")
+        continue
+    for i in counts:
+        countt[i]-=counts[i]      
+        
+
+    res = []
+    sortedt = []   
+    for i in sorted(countt):
+        sortedt.extend(i*countt[i])
+
+    lent = len(sortedt)
+    lens = len(s)
+    ptrs = 0
+    ptrt = 0
+    while ptrs < lens and ptrt < lent:
+        if sortedt[ptrt] > s[ptrs]:
+            res.append(s[ptrs])
+            ptrs+=1
+        elif sortedt[ptrt] < s[ptrs]: 
+            res.append(sortedt[ptrt]) 
+            ptrt+=1
+        else:
+            res.append(s[ptrs])
+            ptrs+=1
+    res.extend(sortedt[ptrt:])  
+    res.extend(s[ptrs:])        
+
+    print("".join(res))        
+
+
+   
+
+
+
