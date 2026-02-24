@@ -1,0 +1,19 @@
+t = int(input())
+for i in range(t):
+    s = input().strip()
+    left = 0
+    right = 1
+    res = []
+    while right < len(s):
+        if s[left]==s[right]:
+            left+=2
+            right+=2
+        else:
+            res.append(s[left])
+            left+=1
+            right+=1
+    res.extend(s[left:])
+    res.extend(s[right:]) 
+    res.sort()       
+    print("".join(set(res)))            
+    
