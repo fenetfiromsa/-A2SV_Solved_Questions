@@ -1,0 +1,15 @@
+n, s = map(int, input().split())
+nums = list(map(int, input().split()))
+left = 0
+count = 0
+seg_num = 0
+for right in range(n):
+    count+=nums[right]
+    while count > s:
+        count-= nums[left]
+        left+=1
+    seg_num += right - left + 1    
+print(seg_num)        
+
+
+
