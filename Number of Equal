@@ -1,0 +1,12 @@
+from collections import Counter
+n, m = map(int, input().split())
+nums = list(map(int, input().split()))
+numt = list(map(int, input().split()))
+counts = Counter(nums)
+countt = Counter(numt)
+count = 0
+for key in counts:
+    if key in countt:
+        mul = countt[key] * counts[key]
+        count += mul
+print(count)        
