@@ -1,0 +1,29 @@
+class Solution:
+    def subarrays(self, nums, k):
+        counts = defaultdict(int)
+        left = 0
+        count = 0
+
+        for right in range(len(nums)):
+            counts[nums[right]] += 1
+
+            while len(counts) > k:
+                if counts[nums[left]] == 1:
+                    del counts[nums[left]]
+                else:
+                    counts[nums[left]] -= 1
+                left += 1
+
+            count += right - left + 1
+
+        return count
+            
+            
+
+    def subarraysWithKDistinct(self, nums: List[int], k: int) -> int:
+        return self.subarrays(nums, k) - self.subarrays(nums, k - 1)    
+
+
+
+        
+        
