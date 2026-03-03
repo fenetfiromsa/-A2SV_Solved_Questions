@@ -1,0 +1,24 @@
+from collections import defaultdict
+n, k = map(int, input().split())
+nums =list(map(int, input().split()))
+
+left = 0
+dictn = defaultdict(int)
+ans = []
+max_len = 0
+cursum = 0
+for right in range(n):
+    dictn[nums[right]]+=1
+ 
+    while len(dictn) > k:
+        dictn[nums[left]]-=1
+        if dictn[nums[left]] == 0:
+            del dictn[nums[left]]
+        left += 1
+    cursum = right - left + 1
+    max_len = max(max_len, cursum)
+    if max_len <= cursum:
+        ans = [left+1 , right+1]
+    
+
+print(*ans)
