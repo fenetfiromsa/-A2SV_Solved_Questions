@@ -1,0 +1,22 @@
+from collections import defaultdict
+n, k = map(int, input().split())
+nums =list(map(int, input().split()))
+
+left = 0
+dictn = defaultdict(int)
+ans = 0
+
+
+for right in range(n):
+    dictn[nums[right]]+=1
+ 
+    while len(dictn) > k:
+        dictn[nums[left]]-=1
+        if dictn[nums[left]] == 0:
+            del dictn[nums[left]]
+        left += 1
+    ans+= right - left + 1
+    
+    
+
+print(ans)
