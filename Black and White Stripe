@@ -1,0 +1,16 @@
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    s = input().strip()
+    left = 0
+    whites = s[:k].count("W")
+    mini = whites
+
+    for right in range(k, len(s)):
+        if s[right] == "W":
+            whites+=1 
+        if s[left] == "W":
+            whites-=1
+        mini = min(mini, whites)
+        left+=1
+    print(mini)        
