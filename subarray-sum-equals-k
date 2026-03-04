@@ -1,0 +1,19 @@
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        prefixcount = {0:1}
+        prefixsum = 0
+        count = 0
+        for  num in nums:
+            prefixsum+=num
+            if prefixsum - k in prefixcount:
+                count+= prefixcount[prefixsum - k]
+            if prefixsum in prefixcount:
+                prefixcount[prefixsum] += 1  
+            else:
+                prefixcount[prefixsum] = 1  
+        
+        return count    
+                
+
+
+        
