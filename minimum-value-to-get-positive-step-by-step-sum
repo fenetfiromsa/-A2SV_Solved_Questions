@@ -1,0 +1,20 @@
+class Solution:
+    def minStartValue(self, nums: List[int]) -> int:
+        n = len(nums)
+        arr = []
+        prefixsum = 0
+        for i in range(n):
+            prefixsum+=nums[i]
+            arr.append(prefixsum)
+        mini = min(arr)
+        if mini< 0:
+            mini = abs(mini)+1
+        else:
+            mini = 1    
+        return mini
+
+
+  
+
+
+        
