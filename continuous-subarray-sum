@@ -1,0 +1,29 @@
+class Solution:
+    def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+        prefixsum = 0
+        remainderindex = {0: -1}   
+        
+        for i in range(len(nums)):
+            prefixsum += nums[i]
+            
+            if k != 0:
+                remainder = prefixsum % k
+            else:
+                remainder = prefixsum
+            
+            if remainder in remainderindex:
+                if i - remainderindex[remainder] >= 2:
+                    return True
+            else:
+                remainderindex[remainder] = i
+        
+        return False
+                
+
+
+
+
+
+
+
+        
