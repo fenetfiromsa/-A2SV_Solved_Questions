@@ -1,0 +1,21 @@
+class Solution:
+    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+        prefixcount = {0:1}
+        prefixsum = 0
+        count = 0
+        for  num in nums:
+            prefixsum+=num
+            if prefixsum - goal in prefixcount:
+                count+= prefixcount[prefixsum - goal]
+            if prefixsum in prefixcount:
+                prefixcount[prefixsum] += 1  
+            else:
+                prefixcount[prefixsum] = 1  
+        
+        return count    
+                
+
+
+        
+
+        
