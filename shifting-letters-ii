@@ -1,0 +1,25 @@
+from typing import List
+
+class Solution:
+    def shiftingLetters(self, s: str, shifts: List[List[int]]) -> str:
+        n = len(s)
+        prefixsum = [0] * (n + 1)
+
+    
+        for st, e, d in shifts:
+            val = 1 if d == 1 else -1
+            prefixsum[st] += val
+            if e + 1 < len(prefixsum):
+                prefixsum[e + 1] -= val
+
+        
+        ans = []
+        curshift = 0
+        
+        for i in range(n):
+            curshift += prefixsum[i]
+            shift = curshift % 26
+            new_char = chr((ord(s[i]) - ord('a') + shift) % 26 + ord('a'))
+            ans.append(new_char)
+
+        return "".join(ans)
