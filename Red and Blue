@@ -1,0 +1,27 @@
+t = int(input())
+for _ in range(t):
+    a = int(input())
+    numa = list(map(int, input().split()))
+    b = int(input())
+    numb = list(map(int, input().split()))
+    am = []
+    bm = []
+    prefixa = 0
+    prefixb = 0
+    for i in range(a):
+        prefixa +=numa[i]
+        am.append(prefixa)
+    for i in range(b):
+        prefixb +=numb[i]
+        bm.append(prefixb)
+    maxa = max(am)
+    maxb = max(bm)
+    if maxa < 0 :
+        maxa = 0 
+    if maxb < 0:
+        maxb = 0
+
+    ans = maxa + maxb  
+    print(ans)  
+
+
