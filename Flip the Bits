@@ -1,0 +1,37 @@
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    a = list(input().strip())
+    b = list(input().strip())
+
+    bal = [0]*n
+    zero = 0
+    one = 0
+
+    for i in range(n):
+        if a[i] == '0':
+            zero += 1
+        else:
+            one += 1
+        bal[i] = (zero == one)
+
+    flip = False
+    pos = True
+
+    for i in range(n-1, -1, -1):
+        cur = a[i]
+
+        if flip:
+            cur = '1' if cur == '0' else '0'
+
+        if cur == b[i]:
+            continue
+
+        if not bal[i]:
+            pos = False
+            break
+
+        flip ^= 1
+
+    print("YES" if pos else "NO")
