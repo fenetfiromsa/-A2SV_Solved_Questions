@@ -1,0 +1,15 @@
+class Solution:
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
+        prefixcount = defaultdict(int)
+        prefixcount[0]= 1
+        prefixsum = 0
+        count = 0
+        for num in nums:
+            prefixsum+=num
+            r = prefixsum % k
+            if r in prefixcount:
+                count+=prefixcount[r]
+            prefixcount[r]+=1
+        return count    
+        
+        
