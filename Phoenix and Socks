@@ -1,0 +1,46 @@
+from collections import Counter
+
+t = int(input())
+for _ in range(t):
+    n, l, r = map(int, input().split())
+    nums = list(map(int, input().split()))
+    left = nums[:l]
+    right = nums[l:]
+
+    countl = Counter(left)
+    countr = Counter(right)
+
+    
+    for col in list(countl.keys()):
+        p = min(countl[col], countr.get(col, 0))
+        countl[col] -= p
+        countr[col] -= p
+
+   
+    eL = sum(countl.values())
+    eR = sum(countr.values())
+
+    
+    if eL < eR:
+        eL, eR = eR, eL
+        countl, countr = countr, countl
+
+    diff = eL - eR
+    flips = 0
+    for col, cnt in countl.items():
+        take = min(cnt // 2, diff // 2)
+        flips += take
+        diff -= take * 2
+        countl[col] -= take * 2
+        if diff == 0:
+            break
+
+    flips += diff
+
+   
+    eL = sum(countl.values())
+    eR = sum(countr.values())
+    recolor_cost = (eL + eR) // 2
+
+    res = flips + recolor_cost
+    print(res)
