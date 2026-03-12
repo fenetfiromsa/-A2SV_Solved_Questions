@@ -1,0 +1,24 @@
+s = input()
+stack = [-1]
+maxlen = 0
+count = 0
+for ind, st in enumerate(s):
+    if st == "(":
+        stack.append(ind)
+    elif st == ")":
+        stack.pop()
+        if not stack:
+            stack.append(ind)
+        else:
+            length = ind - stack[-1]  
+            if length == maxlen:
+                count+=1
+            if length > maxlen:
+                maxlen = length
+                count = 1   
+if maxlen == 0 :
+    print("0 1")  
+else:
+    print(maxlen, count)               
+
+
