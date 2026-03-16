@@ -1,0 +1,13 @@
+class Solution:
+    def numRabbits(self, answers: List[int]) -> int:
+        count = Counter(answers)
+        res = 0
+        for val, fre in count.items():
+            grp = val + 1
+            g = ceil(fre/grp)
+            res += grp * g
+        return res     
+        
+
+
+        
