@@ -1,0 +1,12 @@
+class Solution:
+    def twoCitySchedCost(self, costs: List[List[int]]) -> int:
+        count = 0
+        withdiff = []
+        n = len(costs)//2
+        for a, b in costs:
+            withdiff.append(b-a)
+            count+=a
+        withdiff.sort()
+        for i in range(n):
+            count+= withdiff[i]
+        return count 
