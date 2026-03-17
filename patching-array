@@ -2,10 +2,14 @@ class Solution:
     def minPatches(self, nums: List[int], n: int) -> int:
         miss = 1
         patch = 0
-        for num in nums:
-            if num <= miss:
-                miss +=num
-            elif num > miss:
-                patch+=1
-                miss = 2 * miss
-        return patch        
+        i = 0
+        
+        while miss <= n:
+            if i < len(nums) and nums[i] <= miss:
+                miss += nums[i]
+                i += 1
+            else:
+                miss += miss
+                patch += 1
+        
+        return patch
