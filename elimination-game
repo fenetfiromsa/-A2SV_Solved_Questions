@@ -1,0 +1,19 @@
+class Solution:
+    def lastRemaining(self, n: int) -> int:
+        def back(n):
+            if n == 1:
+                return 1
+            return 2 * forth(n//2) + (n%2) - 1
+
+        def forth(n):
+            if n == 1:
+                return 1
+            return 2 * back(n//2)
+
+        return forth(n)
+        
+
+
+
+              
+        
