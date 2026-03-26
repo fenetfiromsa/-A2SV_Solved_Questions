@@ -1,0 +1,25 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        comb = []
+        res = []
+        used = [False] * len(nums)
+
+        def backtrack():
+            if len(comb) == len(nums):
+                res.append(comb[:])
+                return
+            
+            for i in range(len(nums)):
+                if used[i]:
+                    continue
+                
+                comb.append(nums[i])
+                used[i] = True
+                
+                backtrack()
+                
+                comb.pop()
+                used[i] = False
+
+        backtrack()
+        return res
