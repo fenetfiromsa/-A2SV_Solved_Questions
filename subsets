@@ -1,0 +1,19 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        comb = []
+        def other(num):
+            if num == len(nums):
+                res.append(comb[:])
+                return
+
+            comb.append(nums[num])
+            other(num+1)
+            
+
+            comb.pop()
+            other(num+1)  
+        other(0)
+        return res      
+
+ 
