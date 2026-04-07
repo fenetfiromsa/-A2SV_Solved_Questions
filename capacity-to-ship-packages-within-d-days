@@ -1,0 +1,25 @@
+class Solution:
+    def shipWithinDays(self, weights: List[int], days: int) -> int:
+        totw = 0
+        maxweight = -1
+        for weigh in weights:
+            maxweight = max(maxweight, weigh)
+            totw += weigh
+        left = maxweight
+        right = totw
+        
+        while left < right:
+            dayneed = 1
+            currweight = 0
+            mid =(left + right)//2
+            for weigh in weights:
+                if currweight + weigh > mid:
+                    dayneed += 1
+                    currweight = 0
+                currweight += weigh
+            if days < dayneed:
+                left = mid + 1
+            else:
+                right = mid
+        return left   
+          
