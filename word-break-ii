@@ -1,0 +1,26 @@
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+        words = set(wordDict)
+        fin = {}
+        def backtrack(start):
+            if start == len(s):
+                return [""]
+            if start in fin:
+                return fin[start]
+            res = []
+            for end in range(start + 1, len(s) + 1):
+                word = s[start:end]
+                if word in words:
+                    left = backtrack(end)
+                    for sub in left:
+                        if sub:
+                            res.append(word + " " + sub)
+                        else:
+                            res.append(word)   
+            fin[start] = res
+            return res            
+
+
+
+        
+        return backtrack(0)
