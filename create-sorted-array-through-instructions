@@ -1,0 +1,28 @@
+class Solution:
+    def createSortedArray(self, instructions: List[int]) -> int:
+        # count = 0
+        # nums = []
+        # for inst in instructions:
+        #     greater = 0
+        #     less = 0
+        #     for num in nums:
+                
+        #         if inst < num:
+        #             greater += 1
+        #         elif inst > num:
+        #             less += 1
+        #         else:
+        #             continue    
+        #     count += min(less, greater)            
+        #     nums.append(inst) 
+        # return count    
+
+        count = 0
+        nums = []
+        MOD = 10**9 + 7
+        for inst in instructions:
+            less = bisect_left(nums, inst)
+            greater = len(nums) - bisect_right(nums, inst)
+            count += min(less, greater)
+            insort(nums, inst)
+        return count % MOD  
