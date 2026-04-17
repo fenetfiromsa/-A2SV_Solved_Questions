@@ -1,0 +1,54 @@
+class Solution:
+    def solveSudoku(self, board: list[list[str]]) -> None:
+     
+        norm = defaultdict(set)
+        for row in range(9):
+            for col in range(9):
+                if board[row][col] != '.':
+                    norm[(-1, row)].add(int(board[row][col]))
+                    norm[(-2, col)].add(int(board[row][col]))
+                    norm[(row//3) * 3, (col//3) * 3].add(int(board[row][col]))
+        def back(row, col):
+            if row == 9:
+                return True
+
+
+            if col + 1 != 9:
+                newrow = row
+                newcol = col + 1 
+            else:
+                newrow = row + 1
+                newcol = 0
+
+
+            if board[row][col] != '.':
+                return back(newrow, newcol)
+
+
+            for opt in range(1, 10):
+                if opt in norm[(-1, row)] or opt in norm[(-2, col)] or opt in norm[((row//3) * 3, (col//3) * 3)]:
+                    continue
+
+
+                norm[(-1, row)].add(opt)
+                norm[(-2, col)].add(opt)
+                norm[((row//3) * 3, (col//3) * 3)].add(opt)
+                board[row][col] = str(opt)
+
+                if back(newrow, newcol):
+                    return True
+
+
+                norm[(-1, row)].remove(opt)
+                norm[(-2, col)].remove(opt)
+                norm[((row//3) * 3, (col//3) * 3)].remove(opt)
+                board[row][col] = '.' 
+            return False
+
+        back(0, 0)           
+
+
+
+            
+
+        
