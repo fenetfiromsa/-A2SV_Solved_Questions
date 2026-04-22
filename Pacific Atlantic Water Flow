@@ -1,0 +1,7 @@
+if (
+                    0 <= nr < m and
+                    0 <= nc < n and
+                    (nr, nc) not in visited and
+                    heights[nr][nc] >= heights[r][c]  # reverse flow condition
+                ):
+                    dfs(nr, nc, visited)
