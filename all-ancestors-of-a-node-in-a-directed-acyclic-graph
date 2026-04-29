@@ -1,0 +1,26 @@
+class Solution:
+    def getAncestors(self, n: int, edges: List[List[int]]) -> List[List[int]]:
+        indgr = [ [] for _ in range(n)]
+        for fro, to in edges:
+            indgr[to].append(fro)
+        def dfs(ind, visited):
+            for neigh in indgr[ind]:
+                if neigh not in visited:
+                    visited.add(neigh)
+                    dfs(neigh, visited) 
+    
+        
+        res = []
+        for i in range(n):
+            visited = set()
+            dfs(i, visited)
+            res.append(sorted(visited))
+            
+        return res       
+             
+        
+
+           
+
+
+        
